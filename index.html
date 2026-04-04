@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Armaan Bhandari - IIT(BHU) Varanasi - Personal Homepage</title>
+<style>
+  /* ===== BASE ===== */
+  * { box-sizing: border-box; }
+  body { margin:0; padding:0; background:#c0c0c0; font-family:Times New Roman,serif; font-size:13px; color:#000; }
+  a { color:#0000cc; } a:visited { color:#551a8b; } a:hover { color:#cc0000; }
+  img { max-width:100%; }
+
+  /* ===== TOP STRIP ===== */
+  #topstrip {
+    background:#ffffcc; border-bottom:1px solid #cccc00;
+    padding:2px 8px; font-family:Arial,sans-serif; font-size:10px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:4px;
+  }
+  .hit-counter {
+    display:inline-block; background:#000; color:#ff0000;
+    font-family:'Courier New',monospace; font-size:13px;
+    padding:2px 6px; letter-spacing:3px; border:2px inset #888;
+  }
+
+  /* ===== TICKER ===== */
+  #ticker {
+    background:#ffff00; border-top:1px solid #cccc00; border-bottom:1px solid #cccc00;
+    overflow:hidden; padding:2px 0; font-family:Arial,sans-serif;
+    font-size:10px; font-weight:bold; color:#000; white-space:nowrap;
+  }
+  #ticker-inner { display:inline-block; animation:ticker 35s linear infinite; }
+  @keyframes ticker { 0%{transform:translateX(100vw)} 100%{transform:translateX(-100%)} }
+
+  /* ===== HEADER ===== */
+  #header { background:#fff; border-bottom:3px solid #cc0000; }
+  #header-inner { display:flex; align-items:stretch; flex-wrap:wrap; }
+  #site-title {
+    background:#cc0000; color:#fff; font-family:Arial Black,Arial,sans-serif;
+    font-size:32px; font-weight:900; padding:8px 16px; letter-spacing:-1px;
+    white-space:nowrap; border-right:3px solid #990000;
+  }
+  #site-title span { color:#ffff00; font-size:14px; font-weight:normal; font-family:Arial; }
+  #header-meta { flex:1; min-width:0; display:flex; flex-direction:column; justify-content:space-between; }
+
+  /* NAV */
+  #header-nav {
+    background:#eee; border-bottom:1px solid #999;
+    font-family:Arial,sans-serif; font-size:11px; padding:4px 8px;
+    display:flex; flex-wrap:wrap; gap:2px; align-items:center;
+  }
+  #header-nav a {
+    color:#000080; text-decoration:none; font-weight:bold;
+    font-size:11px; padding:2px 6px; white-space:nowrap;
+  }
+  #header-nav a:hover { text-decoration:underline; color:#cc0000; }
+  #header-nav .ieee-link { color:#cc0000 !important; }
+
+  /* Hamburger (mobile) */
+  #hamburger {
+    display:none; background:#000080; color:#fff; border:none;
+    font-size:18px; padding:4px 10px; cursor:pointer; font-family:Arial;
+  }
+  #mobile-nav {
+    display:none; flex-direction:column; background:#eee;
+    border-bottom:2px solid #999; font-family:Arial,sans-serif;
+  }
+  #mobile-nav a {
+    display:block; padding:8px 16px; color:#000080; text-decoration:none;
+    font-weight:bold; font-size:13px; border-bottom:1px solid #ccc;
+  }
+  #mobile-nav a:hover { background:#000080; color:#fff; }
+  #mobile-nav.open { display:flex; }
+
+  #header-date {
+    font-family:Arial,sans-serif; font-size:10px; color:#666;
+    padding:2px 8px; background:#f5f5f5;
+  }
+  .blinktext { animation:blinkAnim 1s step-start infinite; color:#cc0000; font-weight:bold; }
+  @keyframes blinkAnim { 0%,100%{visibility:visible} 50%{visibility:hidden} }
+
+  /* ===== BREAKING BAR ===== */
+  #breaking {
+    background:#cc0000; color:#fff; padding:4px 8px;
+    font-family:Arial,sans-serif; font-size:11px; font-weight:bold;
+    display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+    border-bottom:2px solid #990000;
+  }
+  #breaking-label { background:#ffff00; color:#000; padding:2px 6px; font-size:10px; font-weight:900; white-space:nowrap; }
+
+  /* ===== MAIN LAYOUT ===== */
+  #main-layout { display:flex; align-items:flex-start; background:#fff; }
+
+  /* LEFT SIDEBAR */
+  #left-sidebar {
+    width:155px; min-width:155px; background:#dfe3e8;
+    border-right:2px solid #999; font-family:Arial,sans-serif; font-size:11px;
+    flex-shrink:0;
+  }
+  .sb-title {
+    background:#000080; color:#fff; font-weight:bold; font-size:11px;
+    padding:3px 6px; margin:0; font-family:Arial,sans-serif;
+    letter-spacing:.5px; border-bottom:1px solid #0000aa;
+  }
+  .sb-links { padding:4px 0; margin:0; list-style:none; border-bottom:1px solid #aaa; }
+  .sb-links li a {
+    display:block; padding:2px 8px; font-family:Arial,sans-serif;
+    font-size:11px; font-weight:bold; color:#000066; text-decoration:none;
+    border-bottom:1px solid #ccc;
+  }
+  .sb-links li a:hover { background:#000080; color:#fff; }
+  .sb-box { border:1px solid #999; margin:6px; background:#fff8dc; padding:5px; font-size:10px; font-family:Arial,sans-serif; }
+  .sb-box b { display:block; color:#cc0000; margin-bottom:3px; font-size:10px; }
+  .under-construction {
+    text-align:center; font-family:Arial,sans-serif; font-size:10px;
+    color:#cc0000; font-weight:bold; padding:4px;
+    background:#ffffcc; border:1px solid #cccc00; margin:4px;
+  }
+
+  /* ===== CONTENT ===== */
+  #content { flex:1; min-width:0; background:#fff; }
+  .content-section { border-bottom:2px solid #ccc; padding:8px 10px; }
+  .sec-h {
+    background:#000080; color:#fff; font-family:Arial,sans-serif; font-size:12px;
+    font-weight:bold; padding:3px 8px; margin:0 0 6px 0; letter-spacing:1px; text-transform:uppercase;
+  }
+  .sec-h-red {
+    background:#cc0000; color:#fff; font-family:Arial,sans-serif; font-size:12px;
+    font-weight:bold; padding:3px 8px; margin:0 0 6px 0; letter-spacing:1px; text-transform:uppercase;
+  }
+
+  /* About two-col */
+  .two-col { display:flex; gap:10px; align-items:flex-start; }
+  .col-l { flex:1; min-width:0; }
+  .col-r { width:130px; min-width:130px; flex-shrink:0; }
+
+  /* ===== TABLES — responsive wrapper ===== */
+  .table-wrap { width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+
+  .edu-table,.skills-table,.proj-table,.contact-table {
+    width:100%; border-collapse:collapse; font-family:Arial,sans-serif; font-size:11px; min-width:320px;
+  }
+  .edu-table th,.skills-table th { background:#003366; color:#fff; padding:3px 8px; text-align:left; font-size:10px; border:1px solid #002244; letter-spacing:1px; }
+  .proj-table th { background:#cc0000; color:#fff; padding:3px 8px; text-align:left; font-size:10px; border:1px solid #990000; letter-spacing:1px; }
+  .edu-table td,.skills-table td,.proj-table td,.contact-table td { border:1px solid #ccc; padding:4px 8px; vertical-align:top; }
+  .edu-table tr:nth-child(even) td,.skills-table tr:nth-child(even) td { background:#eef2f7; }
+  .proj-table tr:hover td { background:#fff8dc; }
+  .proj-title { font-weight:bold; color:#0000cc; font-size:12px; display:block; margin-bottom:3px; }
+  .proj-period { font-size:10px; color:#666; font-style:italic; white-space:nowrap; }
+  .tag-pill { display:inline-block; background:#eee; border:1px solid #999; padding:1px 4px; font-size:9px; margin:1px 2px 1px 0; }
+
+  /* ===== NEW BADGE ===== */
+  .badge-new {
+    display:inline; background:#cc0000; color:#fff; font-family:Arial,sans-serif;
+    font-size:9px; font-weight:bold; padding:1px 4px; margin-left:4px;
+    transition:opacity 0.5s ease;
+  }
+  .badge-new.hidden { opacity:0; pointer-events:none; }
+
+  /* ===== EXPERIENCE ===== */
+  .exp-block { border:1px solid #ccc; margin-bottom:8px; background:#fafafa; }
+  .exp-header {
+    background:#e8eef5; padding:4px 8px; border-bottom:1px solid #ccc;
+    display:flex; justify-content:space-between; align-items:flex-start;
+    flex-wrap:wrap; gap:4px; font-family:Arial,sans-serif;
+  }
+  .exp-role { font-weight:bold; color:#000080; font-size:12px; }
+  .exp-date { font-size:10px; color:#666; font-style:italic; white-space:nowrap; }
+  .exp-org { font-size:11px; color:#cc0000; font-style:italic; padding:2px 8px; border-bottom:1px dotted #ccc; font-family:Arial,sans-serif; }
+  .exp-body { padding:5px 8px; font-family:Times New Roman,serif; font-size:13px; }
+  .exp-body ul { margin:0; padding:0 0 0 16px; line-height:1.6; }
+  .exp-body li { margin-bottom:3px; }
+
+  /* ===== ACHIEVEMENTS ===== */
+  .ach-list { margin:0; padding:0 0 0 18px; line-height:1.7; }
+  .ach-list li { margin-bottom:5px; }
+  .hl { color:#cc0000; font-weight:bold; }
+
+  .paper-box { border:2px solid #000080; background:#fff8dc; padding:6px 10px; margin:0 0 8px 0; font-family:Arial,sans-serif; font-size:11px; }
+  .paper-box .pt { font-weight:bold; color:#000080; font-size:12px; display:block; margin-bottom:4px; }
+  .paper-box .pv { color:#cc0000; font-size:10px; font-style:italic; display:block; margin-bottom:4px; }
+
+  /* ===== CONTACT TABLE ===== */
+  .contact-table td { border:1px solid #ccc; padding:5px 10px; }
+  .contact-table tr:nth-child(even) td { background:#f5f5f5; }
+  .c-label { font-weight:bold; color:#000080; width:100px; font-size:10px; text-transform:uppercase; background:#e8eef5 !important; white-space:nowrap; }
+
+  /* ===== RIGHT PANEL ===== */
+  #right-panel {
+    width:190px; min-width:190px; border-left:2px solid #999;
+    background:#f5f5f5; font-family:Arial,sans-serif; font-size:11px; flex-shrink:0;
+  }
+  .rp-box { border-bottom:2px solid #999; padding:6px 8px; }
+  .rp-title { background:#003366; color:#fff; font-family:Arial,sans-serif; font-size:10px; font-weight:bold; padding:2px 6px; margin:0 0 5px 0; text-transform:uppercase; letter-spacing:1px; }
+  .rp-bullets { padding:0 0 0 14px; margin:0; line-height:1.7; font-size:11px; }
+  .rp-bullets li { margin-bottom:3px; }
+
+  /* ===== FOOTER ===== */
+  #footer { background:#000080; color:#fff; text-align:center; padding:6px; font-family:Arial,sans-serif; font-size:10px; border-top:2px solid #0000aa; }
+  #footer a { color:#ffff00; font-size:10px; }
+
+  /* ===== RESPONSIVE BREAKPOINTS ===== */
+
+  /* Tablet: hide right panel, shrink sidebar */
+  @media (max-width:900px) {
+    #right-panel { display:none; }
+  }
+
+  /* Mobile: hide both sidebars, show hamburger, stack layout */
+  @media (max-width:640px) {
+    #left-sidebar { display:none; }
+    #hamburger { display:inline-block; }
+    #header-nav .desktop-links { display:none; }
+    #site-title { font-size:22px; padding:6px 10px; border-right:none; }
+    #header-inner { flex-direction:column; }
+    #header-meta { width:100%; }
+    #header-nav { padding:4px; }
+    .two-col { flex-direction:column; }
+    .col-r { width:100%; text-align:left !important; }
+    .col-r > div { margin:0 0 6px 0 !important; }
+    .content-section { padding:6px 8px; }
+    /* stack projects table on mobile */
+    .proj-table, .proj-table thead, .proj-table tbody, .proj-table th, .proj-table td, .proj-table tr { display:block; }
+    .proj-table thead tr { display:none; }
+    .proj-table td { border:none; border-bottom:1px solid #ddd; padding:4px 8px; font-size:12px; }
+    .proj-table td.proj-period { font-size:10px; color:#666; }
+    .proj-table tr { border:1px solid #ccc; margin-bottom:8px; background:#fff; }
+    .proj-table tr:hover { background:#fff8dc; }
+    #topstrip { font-size:9px; }
+    #topstrip .hit-counter { font-size:11px; }
+    #ticker-inner { animation-duration:20s; }
+    #breaking { font-size:10px; }
+    #footer { font-size:9px; }
+  }
+
+  /* Very small screens */
+  @media (max-width:400px) {
+    #site-title { font-size:18px; }
+    .sec-h, .sec-h-red { font-size:11px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP STRIP -->
+<div id="topstrip">
+  <span>&#9733; Personal Homepage of <b>Armaan Bhandari</b> | IIT (BHU) Varanasi</span>
+  <span>Visitors: <span class="hit-counter">004271</span></span>
+</div>
+
+<!-- TICKER -->
+<div id="ticker"><span id="ticker-inner">
+  &nbsp;&nbsp;&nbsp;&#9658; ICC-11 PAPER PUBLISHED: "Modeling and Control of an H-Configuration Quadrotor with Foldable Arms" &mdash; IISc Bengaluru &nbsp;|&nbsp;
+  &#9658; ALTIRE GLOBAL STUDENT CONTEST: Wild Card Prize Winner $100 &nbsp;|&nbsp;
+  &#9658; TEAM AVERERA: 144 km/kWh efficiency achieved &nbsp;|&nbsp;
+  &#9658; SUMMER RESEARCH INTERN @ DISCO Lab, IIT Kanpur &nbsp;|&nbsp;
+  &#9658; OPEN TO OPPORTUNITIES: Robotics | Control Systems | Autonomous Systems &nbsp;&nbsp;&nbsp;
+</span></div>
+
+<!-- HEADER -->
+<div id="header">
+  <div id="header-inner">
+    <div id="site-title">AB<span>.iitbhu.ac.in</span></div>
+    <div id="header-meta">
+      <div id="header-nav">
+        <!-- Hamburger for mobile -->
+        <button id="hamburger" onclick="toggleNav()" aria-label="Menu">&#9776; MENU</button>
+        <!-- Desktop nav links -->
+        <span class="desktop-links">
+          <a href="#about">&#9654; About</a>
+          <a href="#education">&#9654; Education</a>
+          <a href="#skills">&#9654; Skills</a>
+          <a href="#experience">&#9654; Experience</a>
+          <a href="#projects">&#9654; Projects</a>
+          <a href="#achievements">&#9654; Honours</a>
+          <a href="#contact">&#9654; Contact</a>
+          <a href="https://ieeexplore.ieee.org/document/11372327" target="_blank" class="ieee-link">&#9654; IEEE Paper &#9670;</a>
+        </span>
+      </div>
+      <!-- Mobile dropdown nav -->
+      <div id="mobile-nav">
+        <a href="#about" onclick="closeNav()">&#9658; About Me</a>
+        <a href="#education" onclick="closeNav()">&#9658; Education</a>
+        <a href="#skills" onclick="closeNav()">&#9658; Skills</a>
+        <a href="#experience" onclick="closeNav()">&#9658; Experience</a>
+        <a href="#projects" onclick="closeNav()">&#9658; Projects</a>
+        <a href="#achievements" onclick="closeNav()">&#9658; Honours</a>
+        <a href="#contact" onclick="closeNav()">&#9658; Contact</a>
+        <a href="https://ieeexplore.ieee.org/document/11372327" target="_blank" style="color:#cc0000;">&#9658; IEEE Paper</a>
+      </div>
+      <div id="header-date">
+        Last updated: April 4, 2026 &nbsp;|&nbsp; Best viewed in 1024x768 &nbsp;|&nbsp;
+        <span class="blinktext">&#9733; NOW ACCEPTING RESEARCH COLLABORATIONS</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BREAKING BAR -->
+<div id="breaking">
+  <span id="breaking-label">LATEST</span>
+  Paper at <b>ICC-11, IISc Bengaluru</b> &mdash; "H-Configuration Quadrotor with Foldable Arms"
+  &nbsp;
+  <a href="https://ieeexplore.ieee.org/document/11372327" target="_blank" style="color:#ffff00; text-decoration:underline; white-space:nowrap;">Read on IEEE Xplore &raquo;</a>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div id="main-layout">
+
+  <!-- LEFT SIDEBAR -->
+  <div id="left-sidebar">
+    <div class="sb-title">NAVIGATE</div>
+    <ul class="sb-links">
+      <li><a href="#about">&#9658; About Me</a></li>
+      <li><a href="#education">&#9658; Education</a></li>
+      <li><a href="#skills">&#9658; Skills</a></li>
+      <li><a href="#experience">&#9658; Experience</a></li>
+      <li><a href="#projects">&#9658; Projects</a></li>
+      <li><a href="#achievements">&#9658; Honours</a></li>
+      <li><a href="#contact">&#9658; Contact</a></li>
+    </ul>
+    <div class="sb-title">QUICK LINKS</div>
+    <ul class="sb-links">
+      <li><a href="https://ieeexplore.ieee.org/document/11372327" target="_blank">&#9658; IEEE Paper <span class="badge-new" id="badge-sidebar">NEW</span></a></li>
+      <li><a href="mailto:armaanbhandari007@gmail.com">&#9658; Send E-mail</a></li>
+      <li><a href="tel:+917300940423">&#9658; Phone</a></li>
+    </ul>
+    <div class="sb-title">INTERESTS</div>
+    <div class="sb-box">
+      <b>Research Areas:</b>
+      &#9670; Drone Dynamics<br>
+      &#9670; Control Systems<br>
+      &#9670; ROS 2 / Gazebo<br>
+      &#9670; Embedded Systems<br>
+      &#9670; Path Planning<br>
+      &#9670; CFD Analysis<br>
+      &#9670; Drive-by-Wire<br>
+      &#9670; MATLAB/Simulink
+    </div>
+    <div class="under-construction">&#9888; SITE UNDER<br>CONSTRUCTION</div>
+    <div class="sb-box" style="text-align:center; background:#e8eef5;">
+      <b style="color:#000080;">STATUS:</b><br>
+      <span style="color:#006600; font-weight:bold; font-size:12px;">&#9679; ONLINE</span><br>
+      <span style="font-size:9px; color:#666;">Open to opportunities</span>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div id="content">
+
+    <!-- ABOUT -->
+    <a name="about"></a>
+    <div class="content-section">
+      <div class="sec-h">About Me</div>
+      <div class="two-col">
+        <div class="col-l">
+          <p style="margin:0 0 6px 0; line-height:1.7;">
+            Welcome to the personal homepage of <b>Armaan Bhandari</b>, an Integrated Dual Degree (IDD) student in
+            <b>Mechanical Engineering</b> at <b>IIT (BHU) Varanasi</b>, expected to graduate in 2027.
+          </p>
+          <p style="margin:0 0 6px 0; line-height:1.7;">
+            My work spans <b>robotics</b>, <b>control systems design</b>, <b>embedded systems</b>, and <b>autonomous vehicles</b>.
+            I am particularly interested in the dynamics and control of aerial robots, hybrid locomotion systems,
+            and the integration of hardware and software for real-world autonomous operation.
+          </p>
+          <p style="margin:0; line-height:1.7;">
+            I spent Summer 2025 as a research intern at the <b>DISCO Lab, IIT Kanpur</b>, working under Prof. Abilash Patel
+            on morphing amphibious drones. I have published a paper at the
+            <a href="https://ieeexplore.ieee.org/document/11372327" target="_blank"><b>11th Indian Control Conference (ICC-11)</b></a>
+            at IISc Bengaluru.
+          </p>
+        </div>
+        <div class="col-r" style="text-align:center; font-family:Arial,sans-serif; font-size:10px;">
+          <div style="width:80px; height:100px; background:#c8d8e8; border:2px inset #888; margin:0 auto 6px; display:flex; align-items:center; justify-content:center; font-size:10px; color:#555; font-family:Arial; text-align:center;">PHOTO<br>[AB]</div>
+          <b style="font-size:11px; color:#000080;">Armaan Bhandari</b><br>
+          IDD Mech. Engg.<br>IIT (BHU), Varanasi<br>
+          <hr style="border:1px solid #ccc; margin:4px 0;">
+          <a href="mailto:armaanbhandari007@gmail.com" style="font-size:10px;">E-mail me</a><br>
+          <a href="https://ieeexplore.ieee.org/document/11372327" target="_blank" style="font-size:10px; color:#cc0000; font-weight:bold;">IEEE Xplore</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <a name="education"></a>
+    <div class="content-section">
+      <div class="sec-h">Academic Profile</div>
+      <div class="table-wrap">
+        <table class="edu-table">
+          <tr><th>Degree / Certificate</th><th>Institution</th><th>Year</th></tr>
+          <tr><td><b>IDD Mechanical Engineering</b></td><td>IIT (BHU), Varanasi</td><td>2027 (Expected)</td></tr>
+          <tr><td><b>CBSE Class XII</b></td><td>DVPS Dehradun</td><td>2021 &mdash; 94.20%</td></tr>
+          <tr><td><b>UK Board Class X</b></td><td>GMPIC Uttarakhand</td><td>2019 &mdash; 94.20%</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- SKILLS -->
+    <a name="skills"></a>
+    <div class="content-section">
+      <div class="sec-h">Technical Skills</div>
+      <div class="table-wrap">
+        <table class="skills-table">
+          <tr><th>Category</th><th>Tools / Technologies</th></tr>
+          <tr><td><b>Simulation &amp; Modeling</b></td><td>MATLAB, Simulink, Gazebo, ANSYS Mechanical, ANSYS Fluent (CFD), ANSYS Electronics, SolidWorks</td></tr>
+          <tr><td><b>Programming Languages</b></td><td>Python, C++, C</td></tr>
+          <tr><td><b>Embedded Systems &amp; Control</b></td><td>Arduino, Raspberry Pi, Pixhawk, Control Systems Design, PID Architecture</td></tr>
+          <tr><td><b>Robotics &amp; Automation</b></td><td>ROS 2, Gazebo Simulation, Path Planning (RRT), Pure Pursuit</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <a name="experience"></a>
+    <div class="content-section">
+      <div class="sec-h">Internship / Training</div>
+      <div class="exp-block">
+        <div class="exp-header">
+          <span class="exp-role">Summer Research Internship</span>
+          <span class="exp-date">May 2025 &ndash; July 2025</span>
+        </div>
+        <div class="exp-org">DISCO Lab, IIT Kanpur &mdash; Under Prof. Abilash Patel</div>
+        <div class="exp-body">
+          <ul>
+            <li>Studied kinematics and dynamics of a morphous amphibian drone capable of aerial and ground locomotion.</li>
+            <li>Developed a complete dynamic model in MATLAB; designed control strategies for stable movement during morphing transitions.</li>
+            <li>Implemented custom control allocation for hybrid locomotion.</li>
+            <li>Built a functional hardware prototype of the drone.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sec-h" style="margin-top:6px;">Position of Responsibility</div>
+      <div class="exp-block">
+        <div class="exp-header">
+          <span class="exp-role">Team AVERERA &mdash; Member</span>
+          <span class="exp-date">Sep 2023 &ndash; Sep 2024</span>
+        </div>
+        <div class="exp-org">Shell Eco-Marathon EV Team, IIT (BHU) Varanasi</div>
+        <div class="exp-body">
+          <ul>
+            <li>Contributed to design and development of an efficient EV for the Shell Eco-Marathon, focusing on energy performance, lightweight design, and sustainability.</li>
+            <li>Assisted in assembly and performance testing; gained hands-on experience in eco-friendly vehicle engineering.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <a name="projects"></a>
+    <div class="content-section">
+      <div class="sec-h-red">Projects</div>
+      <div class="table-wrap">
+        <table class="proj-table">
+          <tr><th>Project</th><th style="width:105px;">Period</th><th>Description</th></tr>
+          <tr>
+            <td>
+              <span class="proj-title">Dynamic Modeling &amp; Control of 5-DOF Morphing Quadrotor</span>
+              <div style="margin-top:3px;"><span class="tag-pill">MATLAB</span><span class="tag-pill">Control Systems</span><span class="tag-pill">UAV</span><span class="tag-pill">5-DOF</span></div>
+            </td>
+            <td class="proj-period">May 2025 &ndash; July 2025</td>
+            <td style="font-size:12px; line-height:1.6;">
+              Developed dynamics and control of a novel morphing quadrotor with four independently actuated foldable arms enabling 5-DOF control. Analyzed morphing dynamics to achieve an additional independent DOF with optimal control allocation.
+              <br><a href="https://ieeexplore.ieee.org/document/11372327" target="_blank" style="color:#cc0000; font-weight:bold; font-size:10px;">&#9658; IEEE Paper (ICC-11)</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span class="proj-title">Robot Navigation Using RRT and Pure Pursuit</span>
+              <div style="margin-top:3px;"><span class="tag-pill">ROS 2</span><span class="tag-pill">Python</span><span class="tag-pill">RRT</span><span class="tag-pill">Gazebo</span></div>
+            </td>
+            <td class="proj-period">Sep 2024 &ndash; Nov 2024</td>
+            <td style="font-size:12px; line-height:1.6;">Developed and implemented an RRT-based path planning algorithm for a ground robot. Conducted simulations and practical tests to evaluate path planning and motion control strategies.</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="proj-title">Drive-by-Wire Technology in Autonomous Cars</span>
+              <div style="margin-top:3px;"><span class="tag-pill">Embedded</span><span class="tag-pill">Arduino</span><span class="tag-pill">Drive-by-Wire</span><span class="tag-pill">EV</span></div>
+            </td>
+            <td class="proj-period">June 2024 &ndash; Sep 2024</td>
+            <td style="font-size:12px; line-height:1.6;">Designed and manufactured a comprehensive drive-by-wire system for an electric golf cart. Integrated brake-by-wire and steer-by-wire mechanisms, replacing traditional mechanical controls with electronic actuation.</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="proj-title">PCB Cooling Systems &amp; Thermal Optimization</span>
+              <div style="margin-top:3px;"><span class="tag-pill">ANSYS Fluent</span><span class="tag-pill">CFD</span><span class="tag-pill">PCB Design</span><span class="tag-pill">Thermal</span></div>
+            </td>
+            <td class="proj-period">Jan 2024 &ndash; May 2024</td>
+            <td style="font-size:12px; line-height:1.6;">Studied thermal aspects of PCBs and improved thermal management through layout optimization. Identified hotspots via motor controller load testing. Used CFD simulations to enhance cooling efficiency.</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="proj-title">PID-Based Temperature Control System <span class="badge-new" id="badge-project">NEW</span></span>
+              <div style="margin-top:3px;"><span class="tag-pill">Raspberry Pi</span><span class="tag-pill">PID</span><span class="tag-pill">Embedded</span><span class="tag-pill">Peltier</span></div>
+            </td>
+            <td class="proj-period">July 2025 &ndash; Nov 2025</td>
+            <td style="font-size:12px; line-height:1.6;">Designed a low-cost embedded closed-loop temperature and humidity control system with custom PID architecture. Achieved <b>&plusmn;0.2&deg;C</b> steady-state accuracy. Validated Peltier-based thermoelectric cooling under real-time PID control.</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- ACHIEVEMENTS -->
+    <a name="achievements"></a>
+    <div class="content-section">
+      <div class="sec-h">Honours &amp; Achievements</div>
+      <div class="paper-box">
+        <span class="pt">&#9670; "Modeling and Control of an H-Configuration Quadrotor with Foldable Arms"</span>
+        <span class="pv">11th Indian Control Conference (ICC-11) &mdash; Indian Institute of Science (IISc), Bengaluru</span>
+        <a href="https://ieeexplore.ieee.org/document/11372327" target="_blank">&#9658; View Full Paper on IEEE Xplore</a>
+      </div>
+      <ul class="ach-list">
+        <li>Successfully tested Team AVERERA's Urban Concept Vehicle on campus roads, achieving a high efficiency of <span class="hl">144 km/kWh</span>, demonstrating optimized design and energy performance.</li>
+        <li>Participated in the <b>ALTIRE Global Student Contest</b> and won the <span class="hl">Wild Card Prize of $100</span> in February 2024.</li>
+        <li>Presented <i>"Modeling and Control of an H-Configuration Quadrotor with Foldable Arms"</i> at <b>ICC-11</b>, IISc Bengaluru. [<a href="https://ieeexplore.ieee.org/document/11372327" target="_blank">IEEE Xplore</a>]</li>
+      </ul>
+    </div>
+
+    <!-- CONTACT -->
+    <a name="contact"></a>
+    <div class="content-section">
+      <div class="sec-h">Contact Information</div>
+      <div class="table-wrap">
+        <table class="contact-table">
+          <tr><td class="c-label">E-mail</td><td><a href="mailto:armaanbhandari007@gmail.com">armaanbhandari007@gmail.com</a></td></tr>
+          <tr><td class="c-label">Phone</td><td><a href="tel:+917300940423">+91 7300940423</a></td></tr>
+          <tr><td class="c-label">Address</td><td>House Number 2, Near BSNL Tower, Pokhari, Chamoli, Uttarakhand &ndash; 246473</td></tr>
+          <tr><td class="c-label">Institution</td><td>IIT (BHU), Varanasi, Uttar Pradesh, India</td></tr>
+          <tr><td class="c-label">IEEE Paper</td><td><a href="https://ieeexplore.ieee.org/document/11372327" target="_blank">ieeexplore.ieee.org/document/11372327</a></td></tr>
+        </table>
+      </div>
+    </div>
+
+  </div><!-- end #content -->
+
+  <!-- RIGHT PANEL -->
+  <div id="right-panel">
+    <div class="rp-box">
+      <div class="rp-title">&#9733; IEEE PAPER</div>
+      <div style="font-size:10px; line-height:1.6;">
+        <b style="color:#cc0000;">NEW &mdash; ICC-11, IISc Bengaluru</b><br>
+        <i>"Modeling and Control of an H-Configuration Quadrotor with Foldable Arms"</i><br><br>
+        <a href="https://ieeexplore.ieee.org/document/11372327" target="_blank"
+           style="background:#000080; color:#fff; padding:3px 8px; text-decoration:none; font-size:10px; display:inline-block; font-family:Arial;">
+          &#9658; Read on IEEE Xplore
+        </a>
+      </div>
+    </div>
+    <div class="rp-box">
+      <div class="rp-title">CURRENT STATUS</div>
+      <ul class="rp-bullets">
+        <li>IDD Mech. Engg.</li>
+        <li>IIT (BHU) Varanasi</li>
+        <li>Grad: 2027</li>
+        <li style="color:#006600; font-weight:bold;">&#9679; Open to Work</li>
+      </ul>
+    </div>
+    <div class="rp-box">
+      <div class="rp-title">RECENT PROJECTS</div>
+      <ul class="rp-bullets">
+        <li><a href="#projects">5-DOF Morphing Quadrotor</a></li>
+        <li><a href="#projects">RRT Robot Navigation</a></li>
+        <li><a href="#projects">Drive-by-Wire EV</a></li>
+        <li><a href="#projects">PID Temp Control</a></li>
+        <li><a href="#projects">PCB Thermal Design</a></li>
+      </ul>
+    </div>
+    <div class="rp-box">
+      <div class="rp-title">HIGHLIGHTS</div>
+      <ul class="rp-bullets">
+        <li><span style="color:#cc0000; font-weight:bold;">144 km/kWh</span><br>Team AVERERA EV</li>
+        <li style="margin-top:4px;"><span style="color:#cc0000; font-weight:bold;">$100 Prize</span><br>ALTIRE Global</li>
+        <li style="margin-top:4px;"><span style="color:#cc0000; font-weight:bold;">ICC-11 Paper</span><br>Published at IISc</li>
+      </ul>
+    </div>
+    <div class="rp-box">
+      <div class="rp-title">TOOLS</div>
+      <ul class="rp-bullets">
+        <li>MATLAB / Simulink</li>
+        <li>ROS 2 / Gazebo</li>
+        <li>ANSYS Fluent</li>
+        <li>Python / C++</li>
+        <li>Arduino / RPi</li>
+        <li>Pixhawk</li>
+        <li>SolidWorks</li>
+      </ul>
+    </div>
+    <div class="rp-box" style="text-align:center;">
+      <div class="rp-title">VISITORS</div>
+      <div style="padding:4px;"><span class="hit-counter">004271</span></div>
+      <div style="font-size:9px; color:#666; margin-top:3px;">since Jan 2025</div>
+    </div>
+  </div>
+
+</div><!-- end #main-layout -->
+
+<!-- FOOTER -->
+<div id="footer">
+  <b>Armaan Bhandari</b> | IIT (BHU) Varanasi | IDD Mechanical Engineering<br>
+  <a href="mailto:armaanbhandari007@gmail.com">armaanbhandari007@gmail.com</a>
+  &nbsp;|&nbsp;
+  <a href="https://ieeexplore.ieee.org/document/11372327" target="_blank">IEEE Paper</a>
+  &nbsp;|&nbsp;
+  <a href="tel:+917300940423">+91 7300940423</a><br><br>
+  <span style="font-size:9px; color:#aaf;">&copy; 2025 Armaan Bhandari. Best viewed at 1024&times;768 resolution.</span>
+</div>
+
+<script>
+  // ── Hamburger menu toggle ──
+  function toggleNav() {
+    document.getElementById('mobile-nav').classList.toggle('open');
+  }
+  function closeNav() {
+    document.getElementById('mobile-nav').classList.remove('open');
+  }
+  // Close mobile nav when clicking outside
+  document.addEventListener('click', function(e) {
+    var nav = document.getElementById('mobile-nav');
+    var btn = document.getElementById('hamburger');
+    if (!nav.contains(e.target) && e.target !== btn) {
+      nav.classList.remove('open');
+    }
+  });
+
+  // ── NEW badge auto-disappear after 5 seconds ──
+  // Uses localStorage so badge stays hidden across page reloads for 24 hours
+  var BADGE_KEY = 'badge_hidden_until';
+  var now = Date.now();
+  var hiddenUntil = parseInt(localStorage.getItem(BADGE_KEY) || '0');
+
+  function hideBadges() {
+    var badges = document.querySelectorAll('.badge-new');
+    badges.forEach(function(b) { b.classList.add('hidden'); });
+    // Hide for 24 hours
+    localStorage.setItem(BADGE_KEY, now + 86400000);
+  }
+
+  if (hiddenUntil && now < hiddenUntil) {
+    // Already hidden from a previous visit — hide immediately
+    hideBadges();
+  } else {
+    // First visit or expired — show for 5 seconds then fade out
+    setTimeout(function() {
+      var badges = document.querySelectorAll('.badge-new');
+      badges.forEach(function(b) {
+        b.style.transition = 'opacity 1s ease';
+        b.style.opacity = '0';
+      });
+      setTimeout(hideBadges, 1000);
+    }, 5000);
+  }
+</script>
+</body>
+</html>
